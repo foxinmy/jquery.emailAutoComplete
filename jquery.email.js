@@ -1,18 +1,19 @@
-/*
+ï»¿/*
  * email autoComplete 0.1
  * http://act.iteye.com
  * 2012-08-20 by jy.hu
- * Ò»¸ö¼òµ¥×Ô¶¯Íê³ÉemailÊäÈëµÄ²å¼ş
+ * ä¸€ä¸ªç®€å•è‡ªåŠ¨å®Œæˆemailè¾“å…¥çš„æ’ä»¶
+ *a simple automatic completion of eamil input jquery plugin
  */
 ;
 (function($){
-	// Ä¬ÈÏÅäÖÃ
+	// é»˜è®¤é…ç½®
 	var settings = {
-		maxItems : 100 , // ×î´óÌáÊ¾ÊıÄ¿
-		subBox : 'email_auto_warp' , // ´æ·ÅÈİÆ÷
-		subOp : 'dd' , // ÁĞ±íÏÔÊ¾
-		hoverClass : 'on' , // Êó±êĞü¸¡ÑùÊ½
-		defaultItems : ['@qq.com' , '@163.com' , '@sina.com' , '@126.com' , '@gmail.com' , '@sohu.com' ,  '@hotmail.com'] // Ä¬ÈÏÌáÊ¾ÓÊÏäºó×º
+		maxItems : 100 , // æœ€å¤§æç¤ºæ•°ç›®
+		subBox : 'email_auto_warp' , // å­˜æ”¾å®¹å™¨
+		subOp : 'dd' , // åˆ—è¡¨æ˜¾ç¤º
+		hoverClass : 'on' , // é¼ æ ‡æ‚¬æµ®æ ·å¼
+		defaultItems : ['@qq.com' , '@163.com' , '@sina.com' , '@126.com' , '@gmail.com' , '@sohu.com' ,  '@hotmail.com'] // é»˜è®¤æç¤ºé‚®ç®±åç¼€
 	};
 	$.fn.emailAutoCompele = function(options){
 		var config = $.extend(settings,options);
@@ -31,7 +32,7 @@
 				warp_head = 'ul';
 			warp_head_html = warp_head_html.replace('{1}',warp_head); 
 			$this.after(warp_div_html+warp_head_html+"</div>");
-			//¼üÅÌÊÍ·ÅÊÂ¼ş
+			//é”®ç›˜é‡Šæ”¾äº‹ä»¶
 			$this.keyup(function(e){
 				if(e.keyCode==40 || e.keyCode==38){
 					return false;
@@ -47,7 +48,7 @@
 						});
 						warp_object.find(warp_head).html(buildItem(cur_value));
 						bindItem(warp_object);
-						//»ñÈ¡½¹µã
+						//è·å–ç„¦ç‚¹
 						$this.focus(function(e){
 							if(warp_object.is(':hidden')){
 									warp_object.find(warp_head).html(buildItem(this.value));
@@ -55,14 +56,14 @@
 									warp_object.show();
 								}
 						});
-						//ÏîÊó±êµã»÷
+						//é¡¹é¼ æ ‡ç‚¹å‡»
 						warp_object.find(config.subOp).click(function(){
 							if(this.id === 'e_type')
 								return;
 							var _that = $(this);
 							$this.val(_that.text());
 						});
-						//Êó±êµã»÷
+						//é¼ æ ‡ç‚¹å‡»
 						document.onclick = function(event){
 							var e = window.event || event;  
 							var k = e.keyCode || e.which;
@@ -78,7 +79,7 @@
 									window.event.cancelBubble=true
 							}
 						}
-						//¼üÅÌ´¥·¢
+						//é”®ç›˜è§¦å‘
 						document.onkeydown = function(evnet){
 							var e = window.event || event;  
 							var k = e.keyCode || e.which;
@@ -89,21 +90,21 @@
 							var _cur_index = cur_index;
 							var _sign = false;
 							switch(k){
-								case 40://ÏÂ¼ü
+								case 40://ä¸‹é”®
 									if(cur_index == item_lenght)
 										_cur_index = 1;
 									else
 										_cur_index += 1;
 										_sign =true;
 										break;
-								case 38://ÉÏ¼ü
+								case 38://ä¸Šé”®
 									if(cur_index == 1)
 										_cur_index = item_lenght;
 									else
 										_cur_index -= 1;
 										_sign =true;
 										break;
-								case 9://tab¼ü¹Ø±ÕÁªÏë¿ò
+								case 9://tabé”®å…³é—­è”æƒ³æ¡†
 									warp_object.hide();
 									_sign=false;
 									break;
@@ -132,7 +133,7 @@
 		}
 		function bindItem(warp_object){
 			var _items = warp_object.find(config.subOp);
-			//ÏîÊó±êĞü¸¡
+			//é¡¹é¼ æ ‡æ‚¬æµ®
 			_items.hover(function(){
 					if(this.id === 'e_type'){
 						warp_object.find(config.subOp+":eq("+_cur_index_+")").addClass(config.hoverClass);
@@ -148,14 +149,14 @@
 						var _that=$(this);
 						_that.removeClass(config.hoverClass);
 				});
-				//´æ·ÅÈİÆ÷Ğü¸¡ÊÂ¼ş
+				//å­˜æ”¾å®¹å™¨æ‚¬æµ®äº‹ä»¶
 			warp_object.hover(function(){
 				},function(){
 					$(this).find(config.subOp+":eq("+_cur_index_+")").addClass(config.hoverClass);
 			});
 		}
 		function buildItem(cur_value){
-			var warp_item_html = "<"+config.subOp+" id='e_type'>ÇëÑ¡ÔñÓÊ¼şÀàĞÍ:</"+config.subOp+">";
+			var warp_item_html = "<"+config.subOp+" id='e_type'>è¯·é€‰æ‹©é‚®ä»¶ç±»å‹:</"+config.subOp+">";
 			warp_item_html += "<"+config.subOp+" class='on'>"+cur_value+"</"+config.subOp+">";
 			var _item = "<"+config.subOp+">{1}</"+config.subOp+">";
 			var _e = cur_value.indexOf('@');
