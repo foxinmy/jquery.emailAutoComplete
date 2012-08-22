@@ -1,0 +1,35 @@
+<!DOCTYPE html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>jquery plugin--test</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="jquery.email.css" />
+	<script type="text/javascript" language="javascript" src="jquery.email.js"></script>
+	<script type="text/javascript">
+	$().ready(function(){
+		$("#email").emailAutoCompele();
+		})
+	</script>
+	<style type="text/css">
+		#test{
+			width:320px;
+			height:100px;
+			background-color:#eee;
+			margin-left:auto;
+			margin-right:auto;
+			border:solid 1px red;
+			text-align:center;
+			line-height:100px;
+			overflow:hidden;
+			margin-top:20px;
+			color:#000000
+		}
+	</style>
+</head>
+<body>
+	<div id="test">
+		jquery plugin -- test
+        <input type="text" id="email" placeholder="ÊäÈë¿ò" autofocus required autocomplete="off"/>
+	</div>
+</body>
+</html>
