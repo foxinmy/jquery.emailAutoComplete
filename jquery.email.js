@@ -81,7 +81,7 @@
 						}
 						//键盘触发
 						document.onkeydown = function(evnet){
-							var e = window.event || event;  
+							var e = window.event || evnet;  
 							var k = e.keyCode || e.which;
 							var item_object = warp_object.find(config.subOp);
 							var item_lenght = item_object.length-1;
