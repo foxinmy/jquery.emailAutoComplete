@@ -26,7 +26,7 @@
 		var _cur_index_ = 1;
 		if($this.is(':input') && $this.attr('type')==='text'){
 			var warp_div_html = "<div id='"+config.subBox+"'>";
-			var warp_head_html = "<{1} style='min-width: "+_oWidth+"px; '></{1}>";
+			var warp_head_html = "<{1} style='min-width: "+_oWidth+"px;width:"+_oWidth+"px'></{1}>";
 			var warp_head = 'dl';
 			if(config.subOp === 'li')
 				warp_head = 'ul';
