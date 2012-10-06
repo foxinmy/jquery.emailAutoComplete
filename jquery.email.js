@@ -3,7 +3,7 @@
  * http://act.iteye.com
  * 2012-08-20 by jy.hu
  * 一个简单自动完成email输入的插件
- *a simple automatic completion of eamil input jquery plugin
+ *a simple automatic completion of email input jquery plugin
  */
 ;
 (function($){
