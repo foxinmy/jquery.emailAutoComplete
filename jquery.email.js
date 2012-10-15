@@ -50,7 +50,7 @@
 						bindItem(warp_object);
 						//获取焦点
 						$this.focus(function(e){
-							if(warp_object.is(':hidden')){
+							if(warp_object.is(':hidden')&&this.value.replace(/(^\s*)(\s*$)/g,'') != ''){
 									warp_object.find(warp_head).html(buildItem(this.value));
 									bindItem(warp_object);
 									warp_object.show();
