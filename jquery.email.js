@@ -16,7 +16,8 @@
 		defaultItems : ['@qq.com' , '@163.com' , '@sina.com' , '@126.com' , '@gmail.com' , '@sohu.com' ,  '@hotmail.com'] // 默认提示邮箱后缀
 	};
 	$.fn.emailAutoCompele = function(options){
-		var config = $.extend(settings,options);
+		var config = {};
+		$.extend(config,settings,options);
 		var items = config.defaultItems;
 		var $this = $(this);
 		var _oWidth = $this.outerWidth();
@@ -30,7 +31,7 @@
 			var warp_head = 'dl';
 			if(config.subOp === 'li')
 				warp_head = 'ul';
-			warp_head_html = warp_head_html.replace('{1}',warp_head); 
+			warp_head_html = warp_head_html.replace('{1}',warp_head);
 			$this.after(warp_div_html+warp_head_html+"</div>");
 			//键盘释放事件
 			$this.keyup(function(e){
@@ -65,7 +66,7 @@
 						});
 						//鼠标点击
 						document.onclick = function(event){
-							var e = window.event || event;  
+							var e = window.event || event;
 							var k = e.keyCode || e.which;
 							var obj = e.srcElement ? e.srcElement : e.target;
 							var id = obj.getAttribute('id');
@@ -81,7 +82,7 @@
 						}
 						//键盘触发
 						document.onkeydown = function(evnet){
-							var e = window.event || evnet;  
+							var e = window.event || evnet;
 							var k = e.keyCode || e.which;
 							var item_object = warp_object.find(config.subOp);
 							var item_lenght = item_object.length-1;
